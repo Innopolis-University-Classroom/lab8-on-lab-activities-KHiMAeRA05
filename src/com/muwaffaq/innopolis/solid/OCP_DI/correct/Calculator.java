@@ -10,7 +10,7 @@ class Add implements Operation{
     Add(double left, double right){
       this.left = left;
       this.right = right;
-}
+    }
 
     @Override
     public double calculate(){
