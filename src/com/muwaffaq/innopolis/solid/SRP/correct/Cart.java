@@ -2,44 +2,31 @@ package com.muwaffaq.innopolis.solid.SRP.wrong;
 import com.muwaffaq.innopolis.solid.SRP.correct.Product;
 
 import java.util.List;
-
-/**
- * ❌ ❌ ❌ ❌
- * how many responsibilities does it have?
- *
- * SRP :
- * a class should only have one responsibility
- * it should only have one reason to change
- */
  
- interface ICart{
+ class Cart{
     List<Product> products;
     double totals;
     String token;
-    
-    void addToCart(Product product){}
-    void removeFromCart(Product product){}
-    void applyDiscount(int percentage){}
 }
 
-class addCart : ICart {
+class addTo{
 
-    void addToCart(Product product) {
+    void addToCart(Cart cart, Product product) {
         products.add(product);
     }
 
 }
-class removeCart : ICart {
+class removeFrom{
 
-    void removeFromCart(Product product) {
+    void removeFromCart(Cart cart, Product product) {
         products.remove(product);
     }
     
 }
 
-class applyCart : ICart {
+class applyDiscount {
 
-    void applyDiscount(int percentage) {
+    void applyDiscount(Cart cart, int percentage) {
         totals = totals * percentage;
     }
     
