@@ -1,6 +1,6 @@
-package com.muwaffaq.innopolis.solid.LSP_IS.wrong;
+package com.muwaffaq.innopolis.solid.LSP_IS.correct;
 
- interface Bird {}
+interface Bird {}
 
 interface Flyable {
     void fly();
