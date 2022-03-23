@@ -1,36 +1,67 @@
 package com.muwaffaq.innopolis.solid.homework;
 
-
 import java.util.List;
 
-// lab work
-// This Class violates all SOLID Principles, fix it in a Logical way
-public class Human implements Needs {
+interface Languages {
+    public String sayHello();
+}
 
-    private String name;
-    private String nickname;
-    private double salary;
-    private List<String> hobbies;
+class Arabic implements Languages {
 
-    enum Languages {Arabic, English, Japanese}
+    @Override
+    public String sayHello(){
+        return "مرحبا";
+    }
+}
 
-    String sayHello(Languages languages) {
-        if (languages == Languages.Arabic)
-            return "مرحبا";
+class English implements Languages {
+
+    @Override
+    public String sayHello(){
         return "Hello";
     }
+}
 
-    void calculateTax(int percentage) {
-        salary = salary * percentage;
+class Japanese implements Languages {
+
+    @Override
+    public String sayHello(){
+        return "こんにちは";
     }
+}
 
-    int addHobby(String hobby) {
-        hobbies.add(hobby);
-        return hobbies.size();
+class Hobby{
+    List<String> hobbies;
+}
+class addH{
+    int addHobby(Hobby hobby, String namehobby){
+        hobby.hobbies.add(namehobby);
+        return hobby.hobbies.size();
     }
+}
 
-    void creatNickName(String postFix) {
-        nickname = name.concat(postFix);
+class Money{
+    double salary;
+}
+class Tax{
+    void calculateTax(Money mymoney, int percentage) {
+        mymoney.salary = mymoney.salary * percentage;
+    }
+}
+
+class Name{
+    String name;
+    String nickname;
+}
+class CreateNickName{
+    void creatNickName(Name name, String postFix) {
+        name.nickname = name.name.concat(postFix);
+    }
+}
+class Human implements Needs, doPray, doPlaySports, doGetMarried, doOwnCompany, doBecomeEmployee {
+
+    public String sayHello(Languages languages) {
+        return languages.sayHello();
     }
 
     @Override
@@ -59,7 +90,7 @@ public class Human implements Needs {
 
     public static void main(String[] args) {
         Human human = new Human();
-        human.sayHello(Languages.Arabic);
+        human.sayHello(new Arabic());
     }
 
 }
