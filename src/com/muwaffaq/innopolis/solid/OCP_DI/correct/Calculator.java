@@ -1,14 +1,5 @@
 package com.muwaffaq.innopolis.solid.OCP_DI.wrong;
 
-//❌❌❌❌
-// how many SOLID Principle does it violate ?
-// Fix it !!
-
-// l - r
-// r + l
-// DI : high = Abstract class
-// low : classes
-//
  interface Operation {
    double calculate();
  }
