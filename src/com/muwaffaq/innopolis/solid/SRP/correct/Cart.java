@@ -1,9 +1,9 @@
-package com.muwaffaq.innopolis.solid.SRP.wrong;
+package com.muwaffaq.innopolis.solid.SRP.correct;
 import com.muwaffaq.innopolis.solid.SRP.correct.Product;
 
 import java.util.List;
  
- class Cart{
+class Cart{
     List<Product> products;
     double totals;
     String token;
@@ -12,14 +12,14 @@ import java.util.List;
 class addTo{
 
     void addToCart(Cart cart, Product product) {
-        products.add(product);
+        cart.products.add(product);
     }
 
 }
 class removeFrom{
 
     void removeFromCart(Cart cart, Product product) {
-        products.remove(product);
+        cart.products.remove(product);
     }
     
 }
@@ -27,10 +27,7 @@ class removeFrom{
 class applyDiscount {
 
     void applyDiscount(Cart cart, int percentage) {
-        totals = totals * percentage;
+        cart.totals = cart.totals * percentage;
     }
     
 }
-
-
-
