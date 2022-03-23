@@ -9,65 +9,74 @@ package com.muwaffaq.innopolis.solid.OCP_DI.wrong;
 // DI : high = Abstract class
 // low : classes
 //
- class IOperation {
+ interface Operation {
+   double calculate();
+ }
+ class Add implements Operation{
    private double left;
    private double right;
-   public double calculate(double left, double right){};
- }
- class ADD implements IOperation{
+   
+   Add(double left, double right){
+      this.left = left;
+      this.right = right;
+   }
+  
    @Override
    public double calculate(double left, double right){
       return left + right;
    };
  }
- class SUBTRACT implements IOperation{
+ class Substract implements Operation{
+   private double left;
+   private double right;
+  
+   Substract(double left, double right){
+      this.left = left;
+      this.right = right;
+   }
+  
    @Override
    public double calculate(double left, double right){
       return left - right;
    };
  }
- class DIVIDE implements Operation{
+ class Divide implements Operation{
+   private double left;
+   private double right;
+  
+   Divide(double left, double right){
+      this.left = left;
+      this.right = right;
+   }
+  
    @Override
    public double calculate(double left, double right){
       return left / right;
    };
  }
- class MULTIPLICATION implements Operation{
+ class Multiplication implements Operation{
+   private double left;
+   private double right;
+  
+   Multiplication(double left, double right){
+      this.left = left;
+      this.right = right;
+   }
+  
    @Override
    public double calculate(double left, double right){
       return left * right;
    };
  }
- class CalculatorWrong {
-    private double left;
-    private double right;
-
-    public enum Operation {ADD, SUBTRACT, DIVIDE,MULTIPLICATION}
-
-    /// ❌ ❌ ❌ ❌
-    /// this function violates the OP principle
-    /// because it depend on concrete classes enum
+ class CalculatorCorrect {
     public  double calculate(Operation operation) {
-        double result;
-        switch (operation) {
-            case ADD:
-                result = left + right;
-                break;
-            case SUBTRACT:
-                result = left - right;
-                break;
-            default:
-            case DIVIDE:
-                result = left / right;
-                break;
-        }
-        return result;
+        return operation.calculate(left, right);
     }
 
     public static void main(String[] args) {
-        CalculatorWrong calculator = new CalculatorWrong();
-        calculator.calculate(Operation.ADD);
-        calculator.calculate(Operation.ADD);
+        CalculatorCorrect calculator = new CalculatorCorrect();
+        calculator.calculate(new Add());
+        calculator.calculate(new Add());
 
     }
 
